@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Shot Puzzle - Privacy Playbook</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Manrope:wght@400;600;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0a1024;
+            --bg-mid: #141e3d;
+            --panel: rgba(13, 22, 48, 0.86);
+            --line: rgba(142, 185, 255, 0.36);
+            --text-main: #eff6ff;
+            --text-soft: #b9c9e7;
+            --neon-cyan: #53f5ff;
+            --neon-violet: #9f78ff;
+            --neon-orange: #ff9f43;
+            --shadow: rgba(6, 11, 28, 0.64);
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Manrope", sans-serif;
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at 18% 14%, rgba(83, 245, 255, 0.2), transparent 42%),
+                radial-gradient(circle at 78% 20%, rgba(159, 120, 255, 0.2), transparent 40%),
+                linear-gradient(164deg, var(--bg-deep), var(--bg-mid));
+            padding: 24px 16px 40px;
+        }
+
+        .wrap {
+            width: min(900px, 100%);
+            margin: 0 auto;
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--panel);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 24px 48px var(--shadow);
+            padding: 24px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(159, 120, 255, 0.7);
+            color: var(--neon-violet);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin-top: 12px;
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(1.65rem, 5.2vw, 2.6rem);
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 13px rgba(83, 245, 255, 0.38);
+        }
+
+        .lead {
+            margin-top: 12px;
+            color: var(--text-soft);
+            line-height: 1.72;
+            font-size: 0.98rem;
+            font-weight: 600;
+            max-width: 780px;
+        }
+
+        .timeline {
+            margin-top: 18px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .step {
+            border: 1px solid rgba(142, 185, 255, 0.3);
+            border-radius: 14px;
+            background: rgba(12, 20, 43, 0.7);
+            padding: 14px 14px 12px;
+        }
+
+        .step h2 {
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--neon-orange);
+            margin-bottom: 6px;
+        }
+
+        .step p {
+            color: var(--text-soft);
+            line-height: 1.66;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .note {
+            margin-top: 16px;
+            border-left: 4px solid var(--neon-cyan);
+            padding: 10px 12px;
+            background: rgba(83, 245, 255, 0.08);
+            border-radius: 0 10px 10px 0;
+            color: var(--text-soft);
+            line-height: 1.7;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .back {
+            margin-top: 20px;
+            display: inline-block;
+            color: var(--text-main);
+            text-decoration: none;
+            border: 1px solid rgba(159, 120, 255, 0.72);
+            border-radius: 10px;
+            padding: 9px 14px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            background: rgba(159, 120, 255, 0.15);
+        }
+
+        .back:hover {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="wrap">
+        <section class="panel">
+            <span class="tag">Math Shot Puzzle</span>
+            <h1>Privacy Playbook</h1>
+            <p class="lead">
+                This page explains privacy behavior for the game in a short, readable format.
+                It is written in plain language so players can understand what is used during gameplay and what controls remain on the device.
+            </p>
+
+            <div class="timeline">
+                <article class="step">
+                    <h2>1) During play</h2>
+                    <p>The game can store local progress such as unlocked levels, score history, and gameplay preferences to keep your session consistent between launches.</p>
+                </article>
+                <article class="step">
+                    <h2>2) Store and platform services</h2>
+                    <p>Download, updates, purchases, and account-level parental controls are managed by Apple platform services under your system settings and Apple account policies.</p>
+                </article>
+                <article class="step">
+                    <h2>3) Advertising context</h2>
+                    <p>Some versions may include ads or reward videos. Any ad delivery logic follows iOS permissions and the privacy controls available on your device.</p>
+                </article>
+                <article class="step">
+                    <h2>4) Policy updates</h2>
+                    <p>This text can change when the game version, platform requirements, or store disclosures change. Review this page again after major updates.</p>
+                </article>
+            </div>
+
+            <p class="note">
+                This page does not publish direct contact channels, external profile links, or any player identity fields.
+            </p>
+
+            <a class="back" href="index.html">Back to Game Intro</a>
+        </section>
+    </main>
+</body>
+
+</html>

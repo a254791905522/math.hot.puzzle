@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Shot Puzzle - Number Blaster Challenge</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Manrope:wght@400;600;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0a1024;
+            --bg-mid: #141e3d;
+            --panel: rgba(13, 22, 48, 0.84);
+            --line: rgba(142, 185, 255, 0.38);
+            --text-main: #eff6ff;
+            --text-soft: #b9c9e7;
+            --neon-cyan: #53f5ff;
+            --neon-violet: #9f78ff;
+            --neon-orange: #ff9f43;
+            --shadow: rgba(6, 11, 28, 0.6);
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Manrope", sans-serif;
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at 15% 18%, rgba(83, 245, 255, 0.22), transparent 45%),
+                radial-gradient(circle at 84% 20%, rgba(159, 120, 255, 0.2), transparent 42%),
+                radial-gradient(circle at 50% 100%, rgba(255, 159, 67, 0.18), transparent 38%),
+                linear-gradient(165deg, var(--bg-deep), var(--bg-mid));
+            padding: 24px 16px 40px;
+        }
+
+        .wrap {
+            width: min(980px, 100%);
+            margin: 0 auto;
+        }
+
+        .hero {
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--panel);
+            backdrop-filter: blur(8px);
+            padding: 28px 24px 30px;
+            box-shadow: 0 24px 48px var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: -40% auto auto -15%;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(83, 245, 255, 0.2), transparent 72%);
+            pointer-events: none;
+        }
+
+        .topline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .pill {
+            border: 1px solid rgba(83, 245, 255, 0.7);
+            color: var(--neon-cyan);
+            font-size: 0.76rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 999px;
+        }
+
+        .platform {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(1.95rem, 6vw, 3.2rem);
+            line-height: 1.05;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 14px rgba(83, 245, 255, 0.45);
+        }
+
+        .intro {
+            margin-top: 16px;
+            max-width: 760px;
+            line-height: 1.75;
+            color: var(--text-soft);
+            font-weight: 600;
+            font-size: 1.02rem;
+        }
+
+        .cta {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            transition: transform 0.16s ease, box-shadow 0.16s ease;
+        }
+
+        .btn.main {
+            color: #081429;
+            background: linear-gradient(120deg, var(--neon-cyan), #8dfaff);
+            box-shadow: 0 8px 20px rgba(83, 245, 255, 0.34);
+        }
+
+        .btn.alt {
+            color: var(--text-main);
+            border: 1px solid rgba(159, 120, 255, 0.7);
+            background: rgba(159, 120, 255, 0.15);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            border: 1px solid rgba(142, 185, 255, 0.35);
+            border-radius: 16px;
+            background: rgba(15, 26, 56, 0.72);
+            padding: 16px 16px 14px;
+        }
+
+        .card h2 {
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--neon-orange);
+        }
+
+        .card p {
+            color: var(--text-soft);
+            line-height: 1.66;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .loop {
+            margin-top: 18px;
+            border: 1px dashed rgba(83, 245, 255, 0.6);
+            border-radius: 14px;
+            padding: 14px 16px;
+            color: var(--text-soft);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            font-weight: 700;
+            background: rgba(10, 16, 36, 0.45);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="wrap">
+        <section class="hero">
+            <div class="topline">
+                <span class="pill">Arcade Math Puzzle</span>
+                <span class="platform">iPhone · iPad · iOS 15.6+</span>
+            </div>
+
+            <h1><span class="highlight">Math Shot Puzzle</span></h1>
+            <p class="intro">
+                Launch number balls, merge values, and clear demanding targets in fast puzzle rounds built around timing, trajectory, and quick arithmetic.
+                Every shot matters: stack combos, optimize your angle, and solve each board before space runs out.
+            </p>
+
+            <div class="cta">
+                <a class="btn main" href="https://apps.apple.com/us/app/math-shot-puzzle/id6767255304?uo=4" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+                <a class="btn alt" href="privacy.html">View Privacy Notes</a>
+            </div>
+
+            <div class="grid">
+                <article class="card">
+                    <h2>Precision Shots</h2>
+                    <p>Drag, aim, and release with accurate control. Bounce paths and tight lanes create tactical decisions for every move.</p>
+                </article>
+                <article class="card">
+                    <h2>Smart Number Play</h2>
+                    <p>Combine equal values to build higher numbers, then break objective blocks in the most efficient order.</p>
+                </article>
+                <article class="card">
+                    <h2>Short, Intense Runs</h2>
+                    <p>Quick sessions with rising difficulty keep the pace energetic, whether you play for one minute or a full streak.</p>
+                </article>
+            </div>
+
+            <p class="loop">
+                The game loop is simple and addictive: <strong>aim, shoot, merge, clear, repeat</strong>.
+                Easy to read, hard to master, and designed for satisfying "one more level" momentum.
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>
